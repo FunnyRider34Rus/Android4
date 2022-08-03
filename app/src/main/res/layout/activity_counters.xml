@@ -6,40 +6,40 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".view.CounterActivity">
 
     <TextView
-        android:id="@+id/tvText1"
+        android:id="@+id/counter1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/this_is_the_button" />
 
     <Button
-        android:id="@+id/btnNumber1"
+        android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/number_1" />
 
     <TextView
-        android:id="@+id/tvText2"
+        android:id="@+id/counter2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/this_is_the_button" />
 
     <Button
-        android:id="@+id/btnNumber2"
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/number_2" />
 
     <TextView
-        android:id="@+id/tvText3"
+        android:id="@+id/counter3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/this_is_the_button" />
 
     <Button
-        android:id="@+id/btnNumber3"
+        android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/number_3" />
