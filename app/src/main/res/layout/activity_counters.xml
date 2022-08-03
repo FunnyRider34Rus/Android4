@@ -11,8 +11,7 @@
     <TextView
         android:id="@+id/counter1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/this_is_the_button" />
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/button1"
@@ -23,8 +22,7 @@
     <TextView
         android:id="@+id/counter2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/this_is_the_button" />
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/button2"
@@ -35,8 +33,7 @@
     <TextView
         android:id="@+id/counter3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/this_is_the_button" />
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/button3"

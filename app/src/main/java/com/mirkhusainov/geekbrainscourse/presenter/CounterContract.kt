@@ -4,6 +4,7 @@ class CounterContract {
 
     interface View {
         fun showValue (index: Int)
+        fun showAllValue ()
     }
 
     interface Presenter {

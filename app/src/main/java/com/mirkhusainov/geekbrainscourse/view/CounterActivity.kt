@@ -18,26 +18,40 @@ class CounterActivity : AppCompatActivity(), CounterContract.View {
 
         presenter = restoreInstance()
 
+        if (savedInstanceState != null) showAllValue()
         with(binding) {
             button1.setOnClickListener {
-                presenter?.onClick(1)
+                refreshView(0)
             }
             button2.setOnClickListener {
-                presenter?.onClick(2)
+                refreshView(1)
             }
             button3.setOnClickListener {
-                presenter?.onClick(3)
+                refreshView(2)
             }
         }
+    }
+
+    private fun refreshView(index: Int) {
+        presenter?.onClick(index)
+        showValue(index)
     }
 
     override fun showValue(index: Int) {
         with(binding) {
             when (index) {
-                1 -> counter1.text = presenter?.getData(index).toString()
-                2 -> counter2.text = presenter?.getData(index).toString()
-                3 -> counter3.text = presenter?.getData(index).toString()
+                0 -> counter1.text = presenter?.getData(index).toString()
+                1 -> counter2.text = presenter?.getData(index).toString()
+                2 -> counter3.text = presenter?.getData(index).toString()
             }
+        }
+    }
+
+    override fun showAllValue() {
+        with(binding) {
+            counter1.text = presenter?.getData(0).toString()
+            counter2.text = presenter?.getData(1).toString()
+            counter3.text = presenter?.getData(2).toString()
         }
     }
 
@@ -48,5 +62,10 @@ class CounterActivity : AppCompatActivity(), CounterContract.View {
 
     override fun onRetainCustomNonConfigurationInstance(): Any? {
         return presenter
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter = null
     }
 }
