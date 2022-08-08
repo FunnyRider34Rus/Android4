@@ -12,7 +12,7 @@
         android:theme="@style/Theme.GeekBrainsCourse">
         <activity
             android:exported="true"
-            android:name=".MainActivity">
+            android:name=".view.CounterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
