@@ -3,6 +3,7 @@ package com.mirkhusainov.geekbrainscourse.view
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.mirkhusainov.geekbrainscourse.databinding.ActivityCountersBinding
+import com.mirkhusainov.geekbrainscourse.model.CountersModel
 import com.mirkhusainov.geekbrainscourse.presenter.CounterContract
 import com.mirkhusainov.geekbrainscourse.presenter.CounterInteractor
 
@@ -16,42 +17,42 @@ class CounterActivity : AppCompatActivity(), CounterContract.View {
         binding = ActivityCountersBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        presenter = restoreInstance()
+        if (savedInstanceState != null) {
+            setAllValues(CountersModel.getAllValues())
+        }
 
-        if (savedInstanceState != null) showAllValue()
+        presenter = restoreInstance()
+        presenter?.onAttach(this)
+
         with(binding) {
             button1.setOnClickListener {
-                refreshView(0)
+                presenter?.onClick(0)
+
             }
             button2.setOnClickListener {
-                refreshView(1)
+                presenter?.onClick(1)
             }
             button3.setOnClickListener {
-                refreshView(2)
+                presenter?.onClick(2)
             }
         }
     }
 
-    private fun refreshView(index: Int) {
-        presenter?.onClick(index)
-        showValue(index)
-    }
-
-    override fun showValue(index: Int) {
+    override fun setValue(index: Int, value: String) {
         with(binding) {
             when (index) {
-                0 -> counter1.text = presenter?.getData(index).toString()
-                1 -> counter2.text = presenter?.getData(index).toString()
-                2 -> counter3.text = presenter?.getData(index).toString()
+                0 -> counter1.text = value
+                1 -> counter2.text = value
+                2 -> counter3.text = value
             }
         }
     }
 
-    override fun showAllValue() {
+    override fun setAllValues(values: List<Int>) {
         with(binding) {
-            counter1.text = presenter?.getData(0).toString()
-            counter2.text = presenter?.getData(1).toString()
-            counter3.text = presenter?.getData(2).toString()
+            counter1.text = values[0].toString()
+            counter2.text = values[1].toString()
+            counter3.text = values[2].toString()
         }
     }
 

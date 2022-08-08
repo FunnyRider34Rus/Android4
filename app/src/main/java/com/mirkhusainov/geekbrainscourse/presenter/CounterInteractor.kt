@@ -4,22 +4,35 @@ import com.mirkhusainov.geekbrainscourse.model.CountersModel
 
 class CounterInteractor : CounterContract.Presenter {
     private val counters = CountersModel
+    private var view: CounterContract.View? = null
+    override fun onAttach(view: CounterContract.View) {
+        this.view = view
+    }
 
-    override fun onClick(index: Int) {
-        when (index) {
-            0 -> increaseValue(index)
-            1 -> increaseValue(index)
-            2 -> increaseValue(index)
+    override fun onClick(indexOfButton: Int) {
+        when(indexOfButton) {
+            0 -> {
+                increaseValue(indexOfButton)
+                view?.setValue(indexOfButton, counters.getValue(indexOfButton).toString())
+            }
+            1 -> {
+                increaseValue(indexOfButton)
+                view?.setValue(indexOfButton, counters.getValue(indexOfButton).toString())
+            }
+            2 -> {
+                increaseValue(indexOfButton)
+                view?.setValue(indexOfButton, counters.getValue(indexOfButton).toString())
+            }
         }
     }
 
-    override fun getData(index: Int): Int {
-        return counters.getValue(index)
+    override fun getAllValues() {
+        view?.setAllValues(counters.getAllValues())
     }
 
     private fun increaseValue(index: Int) {
         val currentValue = counters.getValue(index)
-        val updateValue = currentValue + 1
-        counters.setValue(index, updateValue)
+        val newValue = currentValue + 1
+        counters.setValue(index, newValue)
     }
 }
